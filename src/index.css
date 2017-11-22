@@ -1,0 +1,52 @@
+[disabled] {
+  cursor: no-drop;
+  opacity: .5; }
+
+body {
+  padding: 30px;
+  background: #ccc; }
+  body .add-to-do-container > * {
+    margin-right: 10px;
+    padding: 15px;
+    border: 2px solid; }
+  body .bottom-box {
+    position: relative; }
+    body .bottom-box #remove-all {
+      position: absolute;
+      padding: 10px;
+      top: 20px;
+      bottom: 20px;
+      border: 2px solid red;
+      background-color: #fff;
+      text-transform: uppercase; }
+  body .list-group {
+    display: inline-block;
+    padding: 20px 0;
+    margin-right: 10px; }
+    body .list-group .lists {
+      margin: 0;
+      padding: 0;
+      width: 400px; }
+      body .list-group .lists li {
+        position: relative;
+        padding: 10px;
+        border: 2px solid;
+        list-style: none;
+        font-size: 0;
+        background: #fff; }
+        body .list-group .lists li + li {
+          margin-top: 10px; }
+        body .list-group .lists li > * {
+          display: inline-block;
+          font-size: initial;
+          vertical-align: middle; }
+        body .list-group .lists li .title {
+          width: 70%; }
+        body .list-group .lists li #hold-item {
+          margin: 0;
+          width: 15%;
+          height: 20px; }
+        body .list-group .lists li #delete-item {
+          width: 15%; }
+
+/*# sourceMappingURL=index.css.map */
