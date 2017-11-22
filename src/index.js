@@ -71,8 +71,10 @@ class ToDoApp extends React.Component {
 	handleRemoveAllItem = () => {
 		let items = this.state.items;
 		let newItems = items.filter(item => item.hold);
-		this.setState({items: newItems});
-		this.allListAreHoldAndCanAddItem();
+		this.setState({
+			items: newItems,
+			allListAreHold: true
+		});
 	};
 
 	allListAreHoldAndCanAddItem = () => {
@@ -113,12 +115,12 @@ class ToDoApp extends React.Component {
 						disableGroup={allListAreHold}
 					/>
 					{(items.length > 0) &&
-						<Button
-							id="remove-all"
-							value="Remove All"
-							disabled={allListAreHold}
-							handleClick={this.handleRemoveAllItem}
-						/>
+					<Button
+						id="remove-all"
+						value="Remove All"
+						disabled={allListAreHold}
+						handleClick={this.handleRemoveAllItem}
+					/>
 					}
 				</div>
 			</div>
