@@ -15,14 +15,14 @@ class ToDoApp extends React.Component {
 		this.maxItems = 5;
 	}
 
-	handleSubmit = (event) => {
+	handleSubmit(event) {
 		event.preventDefault();
 		let itemValue = event.target.newList.value;
 		this.addItem(itemValue);
 		event.target.reset();
 	};
 
-	addItem = (itemValue) => {
+	addItem(itemValue) {
 		let items = this.state.items;
 		let itemsLength = items.length;
 		if (itemsLength >= this.maxItems) {
@@ -38,37 +38,44 @@ class ToDoApp extends React.Component {
 			value: itemValue,
 			hold: false,
 		});
-		this.setState({items: items});
-		this.allListAreHoldAndCanAddItem();
+		this.setState({
+			items: items,
+			...this.allListAreHoldAndCanAddItem(),
+		});
+
 	};
 
-	holdItemToggle = (itemId, e) => {
+	holdItemToggle(itemId, e) {
 		let items = this.state.items;
 		let itemsLength = items.length;
 		for (let i = 0; i < itemsLength; i++) {
 			if (items[i].id === itemId) {
 				items[i].hold = !items[i].hold;
-				this.setState({items: items});
+				this.setState({
+					items: items,
+					...this.allListAreHoldAndCanAddItem(),
+				});
 				break;
 			}
 		}
-		this.allListAreHoldAndCanAddItem();
 	};
 
-	deleteItem = (itemId, e) => {
+	deleteItem(itemId, e) {
 		let items = this.state.items;
 		let itemsLength = items.length;
 		for (let i = 0; i < itemsLength; i++) {
 			if (items[i].id === itemId) {
 				items.splice(i, 1);
-				this.setState({items: items});
+				this.setState({
+					items: items,
+					...this.allListAreHoldAndCanAddItem(),
+				});
 				break;
 			}
 		}
-		this.allListAreHoldAndCanAddItem();
 	};
 
-	handleRemoveAllItem = () => {
+	handleRemoveAllItem() {
 		let items = this.state.items;
 		let newItems = items.filter(item => item.hold);
 		this.setState({
@@ -77,7 +84,7 @@ class ToDoApp extends React.Component {
 		});
 	};
 
-	allListAreHoldAndCanAddItem = () => {
+	allListAreHoldAndCanAddItem() {
 		let items = this.state.items;
 		let itemsLength = items.length;
 		let holdItemsLength = 0;
@@ -91,8 +98,7 @@ class ToDoApp extends React.Component {
 				(this.state.allListAreHold) && (allListAreHold = false);
 			}
 		});
-		console.log(itemsLength, holdItemsLength);
-		this.setState({
+		return ({
 			allListAreHold: allListAreHold,
 			canAddItem: holdItemsLength < this.maxItems,
 		});
@@ -103,15 +109,15 @@ class ToDoApp extends React.Component {
 		return (
 			<div>
 				<Field
-					handleSubmit={this.handleSubmit}
+					handleSubmit={e => {this.handleSubmit(e)}}
 					disabled={!canAddItem}
 				/>
 				<div className="bottom-box">
 
 					<ListGroup
 						items={items}
-						holdItemToggle={this.holdItemToggle}
-						deleteItem={this.deleteItem}
+						holdItemToggle={e => {this.holdItemToggle(e)}}
+						deleteItem={e => {this.deleteItem(e)}}
 						disableGroup={allListAreHold}
 					/>
 					{(items.length > 0) &&
@@ -119,7 +125,7 @@ class ToDoApp extends React.Component {
 						id="remove-all"
 						value="Remove All"
 						disabled={allListAreHold}
-						handleClick={this.handleRemoveAllItem}
+						handleClick={e => {this.handleRemoveAllItem(e)}}
 					/>
 					}
 				</div>
@@ -127,6 +133,7 @@ class ToDoApp extends React.Component {
 		);
 	}
 }
+
 ReactDOM.render(
 	<ToDoApp />,
 	document.getElementById("root")

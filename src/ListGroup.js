@@ -11,12 +11,8 @@ const ListGroup = (props) => {
 							key={item.id}
 							value={item.value}
 							checked={item.hold}
-							holdItemToggle={e => {
-								holdItemToggle(item.id, e)
-							}}
-							deleteItem={e => {
-								deleteItem(item.id, e)
-							}}
+							holdItemToggle={e => {holdItemToggle(item.id, e)}}
+							deleteItem={e => {deleteItem(item.id, e)}}
 						/>
 					);
 				})}

@@ -10,12 +10,13 @@ export default class Field extends React.Component {
 		}
 	}
 
-	handleChange = (event) => {
+	handleChange(event) {
 		this.setState({
 			disableButton: (event.target.value !== '') ? false : true
 		});
 	};
-	handleReset = () => {
+
+	handleReset() {
 		this.setState({disableButton: true});
 	};
 
@@ -24,10 +25,10 @@ export default class Field extends React.Component {
 		return (
 			<form className="add-to-do-container"
 				  onSubmit={this.props.handleSubmit}
-				  onReset={this.handleReset}>
+				  onReset={e => {this.handleReset(e)}}>
 				<Input
 					name={'newList'}
-					hendleChange={this.handleChange}
+					hendleChange={e =>{ this.handleChange(e)}}
 					disabled={disabled}
 				/>
 				<Button
