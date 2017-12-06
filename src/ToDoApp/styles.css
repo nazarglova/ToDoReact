@@ -1,0 +1,47 @@
+.add-to-do-container > * {
+  margin-right: 10px;
+  padding: 15px;
+  border: 2px solid; }
+
+#remove-all {
+  display: inline-block;
+  padding: 10px;
+  bottom: 20px;
+  min-height: 48px;
+  border: 2px solid red;
+  background-color: #fff;
+  text-transform: uppercase;
+  vertical-align: top; }
+
+.list-group {
+  display: inline-block;
+  padding: 20px 0;
+  margin-right: 10px; }
+  .list-group .lists {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    padding: 0;
+    width: 400px; }
+    .list-group .lists li {
+      position: relative;
+      padding: 10px;
+      border: 2px solid;
+      list-style: none;
+      font-size: 0;
+      background: #fff; }
+      .list-group .lists li + li {
+        margin-top: 10px; }
+      .list-group .lists li > * {
+        display: inline-block;
+        font-size: initial;
+        vertical-align: middle; }
+      .list-group .lists li .quantity {
+        width: 10%; }
+      .list-group .lists li .title {
+        width: 45%; }
+      .list-group .lists li #hold-item {
+        margin: 0;
+        width: 15%;
+        height: 20px; }
+      .list-group .lists li #delete-item {
+        width: 15%; }
